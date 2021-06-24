@@ -4,9 +4,8 @@ import pkg from '../package.json'
 import productRoutes from './routes/products.routes'
 
 const app = express();
-
 app.set('pkg', pkg)
-
+app.use(express.json());
 app.use(morgan('dev'));
 
 app.get('/', (reg, res) => {
