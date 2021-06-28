@@ -12,6 +12,9 @@ createRoles();
 app.set('pkg', pkg)
 app.use(express.json());
 app.use(morgan('dev'));
+var cors = require('cors');
+app.use(cors());
+// app.options('*', cors()) 
 
 app.get('/', (reg, res) => {
     res.json({

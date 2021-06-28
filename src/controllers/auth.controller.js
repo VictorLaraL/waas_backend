@@ -5,6 +5,7 @@ import Role from '../models/Role'
 
 
 export const signUp = async (req,res) => {
+    // console.log(req);
     const { username, email, password, roles } = req.body;
 
     const userFound = User.find({email})
@@ -36,12 +37,12 @@ export const signIn = async (req,res) => {
     const userFound = await User.findOne({email: req.body.email}).populate("roles")
     
     if (!userFound){
-        return res.status(400).json({messagge: "user not found"})
+        return res.status(400).json({message: "Usuario no encontrado"})
     }
 
     const matchPassword = await User.comparePassword(req.body.password, userFound.password)
 
-    if (!matchPassword) return res.status(401).json({token: null, message: "invalid password"})
+    if (!matchPassword) return res.status(401).json({token: null, message: "Contraseña incorrecta"})
 
     const token = jwt.sign({id: userFound._id}, config.SECRET, {
         expiresIn: 86400 //24h
