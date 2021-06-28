@@ -6,7 +6,10 @@ import authRoutes from './routes/auth.routes'
 import userRoutes from './routes/user.routes'
 import {createRoles} from './libs/InitialSetup'
 
+
 const app = express();
+//const swaggerUi = require('swagger-ui-express');
+//const swaggerDocument = require('./swagger.json');
 createRoles();
 
 app.set('pkg', pkg)
@@ -24,6 +27,7 @@ app.get('/', (reg, res) => {
 app.use('/api/products', productRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
+//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 export default app;
 
