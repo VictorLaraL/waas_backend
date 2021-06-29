@@ -48,5 +48,5 @@ export const signIn = async (req,res) => {
         expiresIn: 86400 //24h
     })
 
-    res.json({token})
+    res.json({token, userFound})
 }
