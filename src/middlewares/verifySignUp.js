@@ -18,11 +18,11 @@ export const checkRolesExisted = (req, res, next) => {
 export const checkDuplicateUsernameOrEmail = async (req, res, next) => {
     const userFind = await User.findOne({username: req.body.username})
 
-    if (userFind) return res.status(400).json({message: "The user already exists"})
+    if (userFind) return res.status(400).json({message: "El usuario ya existe"})
 
     const emailFind = await User.findOne({email: req.body.email})
 
-    if (emailFind) return res.status(400).json({message: "The email already exists"})
+    if (emailFind) return res.status(400).json({message: "El email ya existe"})
 
     next();
 }
